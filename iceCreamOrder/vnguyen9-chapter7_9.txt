@@ -1,0 +1,103 @@
+Chapter 7.4+ Questions
+
+1. What do you need to do to draw on a component? 
+	To draw on a component, we define a class that extends JComponents and override the paintComponent method
+	in that class
+
+
+
+2. What is the Graphics object?
+	Graphics object remembers a collection of settings for drawing images and text. It has methods that draw
+	patterns, images, and text.
+
+
+3. When is paintComponent called and should a programmer ever call this method?
+	- Each time window need to be redrawn, no matter what the reason, the event handler notifies the component.
+	This cause the paintComponent methods of all components to be excecuted
+	- The programmer should not ever call this method.
+
+4. What are the subclasses of Rectangular Shape mentioned in the book and some of RectangularShape methods mentioned in the book?
+	Rectangular shape's subclasses: Ellipse2D, Rectangle2D <---- and Rectangle
+	- methods: getWidth, getHeight, getCenterX, and getCenterY
+
+5. Explain / comment each line of the following method
+
+public void paintComponent(Graphics g) {
+ 
+      Graphics2D g2 = (Graphics2D) g; // obtain an object of the Graphics2D
+
+      Rectangle2D rect = new Rectangle2D.Double(0, 0, 150, 150); // create rectangle 2d object that implement Shape interface
+      g2.setPaint(Color.BLACK); // Sets the Paint color to black 
+      g2.draw(rect); // draw an outline with Black color of the rectangle by calling draw method of the Graphic2D class
+      g2.setPaint(Color.RED); // change paint color to Red
+      g2.fill(rect); // fill the rectangle interior with red color.
+}
+
+6. Explain the following lines from Listing 7.6
+
+	- line 47: instantiate a variable Image with "image" name
+	- line 51: create an icon image by Creates an ImageIcon from the "blue-ball.gif" then call method getimage()
+
+	- line 62: draw the "blue-ball.gif" icon image by calling draImage(image,0,0, null);
+		parameters: - image: is the image to be drawn
+			    - 0 2nd parameter: integer,is x = 0 coordinate of the top left corner
+			    - 0 3rd parameter: integer, y = 0 coordinate of the top left corner
+			    - null 4th parameter:  obeserver, the object to notify of teh progress of the rendering process is null
+
+Chapter 9.7 Questions
+
+1. What is the difference between modal and modeless dialog boxes? Give an example of each.
+	- The modal dialog box won't let users interact with the remainning windows of the application until we deals
+	  with it. We use a modal dialog box when we need information from the user before we can proceed with execution
+	  Example: when user wants to read a file, a modal file dialog box is the one to pop up. The user must specify
+	  a file name before the program can begin the read operation.
+	- Unlike modal box, the modaless dialog box let user enter infromation in both the dialog box and the remainder
+	  of the application. Example: a modeless dialog is a toolbar. The toolbar can stay in place as long as needed, 
+	  and the user can interract with both the application windown and the toolbar as needed. 
+
+2. What are 4 static methods of JOptionPane and what do they show?
+	- showMessageDialog	Show a message and wait for the user to click OK
+	- showConfirmDialog	Show a message and get a confirmation(like OK/Cancle)
+	- showOptionDiaglog	Show a message and get a user option from a set of option
+	- showInputDiaglog	Show a message and get one line of user input
+
+3. What class should you extend when you want to implement your own dialog box and what steps you should follow when creating your own dialog box?
+	- we need to extend JDialog class.
+	- step  1. in the constructor of your dialog box, call the constructor of the superclass JDialog.
+		2. add the user interface components of the dialog box.
+		3. add the event handlers
+		4. set the size for the dialog box.
+
+4. What steps should you follow to create a file dialog box?
+	1. Make a JFileChooser object.
+	2. Set the directory by calling the setCurrentDirectory method
+	3. if you havea default file name that you expect the user to choose, supply it with the setSelectedFile 
+	   method: chooser.setSelectedFile(newFile(filename));
+	4. To endable the user to select multiple files in the dialog, call the setMultiSelectionEnabled method.
+		chooser.setMultiselectionEnable(true);
+	5. If you want to resetict the display of files in the dialog to those of a particular type then
+	   you need to set a file filter.
+	6. By default, a user can select only files with a file chooser. if you want the user to select directoreis, use the setFileSelectionMode method.
+	   Call it with JFileChooser.FILES_ONLY.
+	7. Show the dialog box by calling the showOpenDialog or showSaveDialog method. We mustt supply the parent component in these calls:
+		int result = chooser.showOpenDialog(parent);
+	or	
+		int result = chooser.showSaveDialog(parent);
+
+	  we can aslo call teh showDialog method and pass and explicit text for the approve button:
+		in result = chooser.showDialog(parent,"Select");
+	  These calls return only when the user has approved, canceled, or dismissed the file dialog. The resturn value is JFileChooser.APPROVE_OPTION,
+		JFileChooser.CANCLE_OPTION, or JFileChooser.ERROR_OPTION
+	8. We get the selected file or files with the getSelectedFile() or getSelectedFiles() method.
+	   These methods return either a single File object or an array of File objects. If we just need the name of the file object, call its getPath method.
+		String file name = chooser.getselectedFile().getPath();
+		we can use filter to control what extension of files we need to show or not
+			public boolen accept(File f); // test whether file should be accepted
+			public String getDescription(); // return discription of file type that can be displayed in the file chooser dialog.
+
+5. What other built-in chooser is described at the end of the chapter? Is it modal or modeless?
+
+	- Color chooser - JColorChooser, it is either modal or modeless
+	  
+
+

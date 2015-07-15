@@ -1,0 +1,14 @@
+Assignment name: Assignment 4
+TCSS 305B: Programming Practicum, Winter 2014
+
+Name: Viet Nguyen
+UWNetID: vnguyen9
+Subversion Revision Number: 79
+
+Assignment Overview:
+
+This assignmen is continued by the previous assignment 3. And at this time, I have to implement the action listener for every button, boxes, and related ice cream order systems. The purpose of this assignment help me to understand how graphic user interface are working over the windown system or like ohter Java platform supported systems. I have learned how to reply when a button or a soure event. In this case, ice cream options are sources where user fire the event and my job is handling those event by implement the action perform or ItemStateChange methods to answer the event. The most important action event in this assignment is changing the price base on the event from each button or option pannels, and check boxes. Beside that, using as less event listener class as possible is major idea to reduce coding and speed. So, coding correctly and fast is not only the main purpose but also contribute the major speed in future coding when run time is the base and the most wanted.
+
+Technical Impression:
+
+In order to get ready for this, I have to read the book, review all the example code in the class and online before start it. Once, I understand the way how we implement action into the button, boxes, and option combo box. I put action that base on the event from the source, and try again back and forth many time I found out better way and improve my code, by reducing to 1 to 2 action listener classes to change the price for user interface. This project is time consuming and need alot of practice in order to complete it neatly and as short as possible since there many code in the ice cream class. Unlike assignment 3, I have to break code in to different classes. Especially option box for ice cream size option, JToggle button panel for cone button, and siminal for other components. I have learned how to use action listener class from this assignment, ActionListener and ItemListener, both are used in this project base on their useful purposes. There also need a little art since user interface is for anybody thathat might not have no experience about coding to use the user graphic correct, I need to make it clear and exact how they appears nice and attactive to users by putting different color, proper location, and name them. Extra credit was based on JOptionPane, it is good for practice and play around to help the main project more abstract and easier for users.
