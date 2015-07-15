@@ -1,0 +1,200 @@
+/**
+ * 
+ */
+package five.progpracticum;
+
+import java.awt.BorderLayout; 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+/**
+ * This represents a Text Editor program.
+ * 
+ * @author Viet Nguyen
+ * @version 1
+ *
+ */
+public class TextEditorGUI {
+    private final String[] FONT_STYLE = {"Plain", "Bold", "Italic"};
+    
+    private final String[] FONT_SIZE = {"8", "10", "12", "14", "16", "18", "20", "24", 
+            "28", "32", "36", "40", "44", "48", "52", "58", "64", "70", "76"};
+    private String[] myFontTypes;
+    /**
+     * This a main frame.
+     */
+    private JFrame myMainFrame;
+    
+    /**
+     * This representing MenuBar
+     */
+    private TextMenuBar myMenuBar; 
+    
+    private JTextArea myTextArea;
+
+    private JScrollPane myScrollPane;
+    
+    private String myCurrentType;
+    
+    private int myCurrentStyle;
+    
+    private int myCurrentSize;
+    
+    private int myStylePosition;
+    
+    private int myTypePosition;
+    
+    private int mySizePosition;
+    
+    private boolean myWordWrap;
+    
+    public TextEditorGUI() {
+        
+        myMainFrame = new JFrame("Simple Text Editor Program");
+       // myMainFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
+        myMenuBar = new TextMenuBar();
+        myMainFrame.setJMenuBar(myMenuBar);
+       
+        createMenus();
+    }
+    
+    private void createMenus () {
+        
+        myTextArea = new JTextArea();
+        
+        myWordWrap = false;
+        final WordWrapListener wordWrapListener = new WordWrapListener();
+        myMenuBar.getMyWordWrapBox().addActionListener(wordWrapListener);
+        
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();     
+        myFontTypes = ge.getAvailableFontFamilyNames();
+    
+        myCurrentType = "Serif";
+        myCurrentStyle = Font.PLAIN;
+        myCurrentSize = 12;
+        
+        final FontListener fontType = new FontListener(myFontTypes, "Type");
+        final FontListener fontStyle = new FontListener(FONT_STYLE, "Style");
+        final FontListener fontSize = new FontListener(FONT_SIZE, "Size");
+        myMenuBar.getMyType().addActionListener(fontType);
+        myMenuBar.getMyStyle().addActionListener(fontStyle);
+        myMenuBar.getMySize().addActionListener(fontSize);
+        
+        myScrollPane = new JScrollPane(myTextArea);
+
+        myTextArea.setEditable(true);
+        myMainFrame.add(myScrollPane, BorderLayout.CENTER); 
+        
+        myMainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        final Toolkit kit = Toolkit.getDefaultToolkit();  // getting tool kit object
+        final Dimension screenSize = kit.getScreenSize();
+        final int screenWidth = screenSize.width; 
+        final int screenHeight = screenSize.height; 
+        
+        myMainFrame.setSize(screenWidth * 4 / 5, screenHeight * 4 / 5); 
+       // myMainFrame.setLocationByPlatform(true);  
+        
+        //myMainFrame.pack();
+        myMainFrame.setLocationRelativeTo(null);
+        myMainFrame.setVisible(true);
+    }
+    
+        
+    
+    public class FontListener implements ActionListener {
+       
+        
+        private String[] myFont;
+        
+        private String myDescription;
+        
+        public FontListener(final String[] aFont, final String aDescription) {
+            myFont = aFont;
+            myDescription = aDescription;
+        }
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            if ("Style".equals(myDescription)) {
+                String input = (String) JOptionPane.showInputDialog
+                        (null, "Select Font Style", "Font Style", 
+                         JOptionPane.PLAIN_MESSAGE, new ImageIcon(),
+                         myFont, myFont[myStylePosition]);
+                if (myFont[1].equals(input)) {
+                    int bold = Font.BOLD;
+                    myTextArea.setFont(new Font(myCurrentType, bold, myCurrentSize));
+                    myCurrentStyle = bold;
+                    myStylePosition = 1;
+                    
+                } else if (myFont[2].equals(input)) {
+                    int italic = Font.ITALIC;
+                    myTextArea.setFont(new Font(myCurrentType, italic, myCurrentSize));
+                    myCurrentStyle = italic;
+                    myStylePosition = 2;
+                } else {
+                    int plain = Font.PLAIN;
+                    myTextArea.setFont(new Font(myCurrentType, plain, myCurrentSize));
+                    myCurrentStyle = plain;
+                    myStylePosition = 2 + 1;
+                }
+         
+            } else if ("Size".equals(myDescription)) {
+                String input = (String) JOptionPane.showInputDialog(null,"Select Font Size",
+                       "Font Style", JOptionPane.PLAIN_MESSAGE, new ImageIcon(), 
+                       myFont, myFont[mySizePosition]);
+                int i = 0;
+                while (!input.equals(myFont[i])) {
+                    i++;
+                }
+                myCurrentSize = Integer.parseInt(myFont[i]);
+                myTextArea.setFont(new Font(myCurrentType, myCurrentStyle, myCurrentSize));
+                mySizePosition = i;
+                
+            } else if ("Type".equals(myDescription)) {
+                String input = (String) JOptionPane.showInputDialog(null, "Select Font Type", "Font Style", 
+                                                                    JOptionPane.PLAIN_MESSAGE, new ImageIcon(), 
+                                                                    myFont, myFont[myTypePosition]);
+                int i = 0;
+                while (!input.equals(myFont[i])) {
+                    i++;
+                }
+                myCurrentType = myFont[i];
+                myTextArea.setFont(new Font(myCurrentType, myCurrentStyle, myCurrentSize));
+                myTypePosition = i;
+            }
+        }
+        
+    } // end FontListener
+    
+    public class WordWrapListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent anEvent) {
+            
+          /*  Object source = anEvent.getSource();
+            AbstractButton origin;
+            origin = (JCheckBoxMenuItem) source;*/
+            //if (source.isSelected()) {
+            if (myMenuBar.getMyWordWrapBox().isSelected()) {
+                myTextArea.setLineWrap(true);
+            } else {
+                myTextArea.setLineWrap(false);
+            }
+        }
+    }
+}

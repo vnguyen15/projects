@@ -1,0 +1,30 @@
+/**
+ * 
+ */
+package five.progpracticum;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+/**
+ * @author V
+ *
+ */
+public class TextArea extends JTextArea {
+    
+    
+    public TextArea () {
+        
+     super();
+   /* JTextArea textArea = new JTextArea(); 
+   // JScrollPane myScrollPane = new JScrollPane(textArea);
+    //myScrollPane.add(textArea);
+    textArea.setEditable(false);
+    //add(textArea);
+    //add(myScrollPane, BorderLayout.CENTER);
+*/    }
+}
+

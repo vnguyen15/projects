@@ -1,0 +1,289 @@
+/**
+ * 
+ */
+package five.progpracticum;
+
+import java.awt.event.KeyEvent;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFileChooser;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+
+/**
+ * This representing a Text Editor Menu Bar.
+ * 
+ * @author Viet Nguyen
+ * @version winter 2014
+ */
+@SuppressWarnings("serial")
+public class TextMenuBar extends JMenuBar {
+    
+    /** The File menu. */
+    private final JMenu myFileMenu;
+  
+    /** The Edit menu. */
+    private final JMenu myFortmatMenu;
+  
+    /** The Help menu. */
+    private final JMenu myHelpMenu;
+    
+    /**
+     * This is a new menu item.
+     */
+    private JMenuItem myNew;
+    
+    /**
+     * This is an Open menu item.
+     */
+    private JMenuItem myOpen;
+    
+    /**
+     * this is a save menu item.
+     */
+    private JMenuItem mySave;
+    
+    /**
+     * This is a Print menu Item.
+     */
+    private JMenuItem myPrint;
+    
+    /**
+     * this is an exit menu Item.
+     */
+    private JMenuItem myExit;
+  
+    /** A button group for the menu radio buttons. */
+    private  ButtonGroup myGroup;
+
+    /**
+     * This is a file chooser.
+     */
+    private JFileChooser myChooser;
+    
+    /**
+     * This is word wrap check box menu item.
+     */
+    private JCheckBoxMenuItem myWordWrapBox;
+    
+    /**
+     * This is a font menu.
+     */
+    private JMenu myFont;
+    
+    /**
+     * This is a Type menu item.
+     */
+    private JMenuItem myType;
+    
+    /**
+     * This is a Style Menu item.
+     */
+    private JMenuItem myStyle;
+    
+    /**
+     * This is a Size menu item.
+     */
+    private JMenuItem mySize;
+    
+    /**
+     * This is an About menu item.
+     */
+    private JMenuItem myAbout;
+    
+   // private PaintPanel myPanel;
+    
+    /**
+     * Construct text menu with its components.
+     */
+    public TextMenuBar() {
+        super();
+        myFileMenu = new JMenu("File");
+        myFortmatMenu = new JMenu("Fortmat");
+        myHelpMenu = new JMenu("Help");
+        myGroup = new ButtonGroup();
+        
+        createFileMenu();
+        createFormatMenu();
+        createHelpMenu();
+    }
+    
+    /**
+     * create File menu items.
+     */
+    private void createFileMenu() {
+        myFileMenu.setMnemonic(KeyEvent.VK_F);
+        myFortmatMenu.setMnemonic(KeyEvent.VK_O);
+        myHelpMenu.setMnemonic(KeyEvent.VK_H);
+        
+        myNew = new JMenuItem("New");
+        myOpen = new JMenuItem("Open");
+        myChooser = new JFileChooser();
+        
+        mySave = new JMenuItem("Save");
+        myPrint = new JMenuItem("Print");
+        myExit = new JMenuItem("Exit");
+        myGroup = new ButtonGroup();
+        myGroup.add(myNew);
+        myGroup.add(myOpen);
+        myGroup.add(mySave);
+        myGroup.add(myPrint);
+        myGroup.add(myExit);
+
+        myFileMenu.add(myNew);
+        myFileMenu.add(myOpen);
+        myFileMenu.add(mySave);
+        myFileMenu.add(myPrint);
+        myFileMenu.add(myExit);
+        
+        add(myFileMenu);
+    }
+    
+    /**
+     * create fortmat menu items.
+     */
+    private void createFormatMenu() {
+        myWordWrapBox = new JCheckBoxMenuItem("Word Wrap");
+        myFont = new JMenu("Font");
+        myType = new JMenuItem("type");
+        myStyle = new JMenuItem("style");
+        mySize = new JMenuItem("size");
+        
+        myFont.add(myType);
+        myFont.add(myStyle);
+        myFont.add(mySize);
+        
+        myFortmatMenu.add(myWordWrapBox);
+        myFortmatMenu.add(myFont);
+        
+        add(myFortmatMenu);
+        
+    }
+    
+    /**
+     * create help menu item.
+     */
+    private void createHelpMenu() {
+        myAbout = new JMenuItem("About");
+        myHelpMenu.add(myAbout);
+        
+        add(myHelpMenu);
+    }
+    
+
+    /**
+     * @return the myFileMenu
+     */
+    public JMenu getMyFileMenu() {
+        return myFileMenu;
+    }
+
+    /**
+     * @return the myFortmatMenu
+     */
+    public JMenu getMyFortmatMenu() {
+        return myFortmatMenu;
+    }
+
+    /**
+     * @return the myHelpMenu
+     */
+    public JMenu getMyHelpMenu() {
+        return myHelpMenu;
+    }
+
+    /**
+     * @return the myNew
+     */
+    public JMenuItem getMyNew() {
+        return myNew;
+    }
+
+    /**
+     * @return the myOpen
+     */
+    public JMenuItem getMyOpen() {
+        return myOpen;
+    }
+
+    /**
+     * @return the mySave
+     */
+    public JMenuItem getMySave() {
+        return mySave;
+    }
+
+    /**
+     * @return the myPrint
+     */
+    public JMenuItem getMyPrint() {
+        return myPrint;
+    }
+
+    /**
+     * @return the myExit
+     */
+    public JMenuItem getMyExit() {
+        return myExit;
+    }
+
+    /**
+     * @return the myGroup
+     */
+    public ButtonGroup getMyGroup() {
+        return myGroup;
+    }
+
+    /**
+     * @return the myChooser
+     */
+    public JFileChooser getMyChooser() {
+        return myChooser;
+    }
+
+    /**
+     * @return the myCheckBox
+     */
+    public JCheckBoxMenuItem getMyWordWrapBox() {
+        return myWordWrapBox;
+    }
+
+    /**
+     * @return the myFont
+     */
+    public JMenu getMyFont() {
+        return myFont;
+    }
+
+    /**
+     * @return the myType
+     */
+    public JMenuItem getMyType() {
+        return myType;
+    }
+
+    /**
+     * @return the myStyle
+     */
+    public JMenuItem getMyStyle() {
+        return myStyle;
+    }
+
+    /**
+     * @return the mySize
+     */
+    public JMenuItem getMySize() {
+        return mySize;
+    }
+
+    /**
+     * @return the myAbout
+     */
+    public JMenuItem getMyAbout() {
+        return myAbout;
+    }
+
+}
