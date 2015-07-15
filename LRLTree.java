@@ -1,9 +1,7 @@
 /* Viet Nguyen
-   Daniel Khieuson
    TCSS 342
-   HW3
-   Spring 2014
-*/
+   HW3 project
+   Spring 2014 */
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +12,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 
-	public class LRLTree {
+public class LRLTree {
 		Node root;
 		Map<String, Integer> env; // enviroment
 		Set<String> operators;  // set of operators
