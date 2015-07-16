@@ -1,0 +1,10 @@
+﻿connection.ds file is where to connect to server base on user name and password
+
+Run computer_retailer_backend.sql to install all the tables
+
+Then run microsoft access file:  Viet.accbb
+This file provide user a pront end of the data base.
+
+There will be tables: 8 of them, all the regular view
+6 queries(can be either view as table when run the sql) or by select on the top left to change to view from MS access
+

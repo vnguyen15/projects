@@ -1,0 +1,8 @@
+[ODBC]
+DRIVER=SQL Server
+UID=viet
+DATABASE=Computer_Retailer
+WSID=VIET
+APP=Microsoft Office 2013
+Trusted_Connection=Yes
+SERVER=.
