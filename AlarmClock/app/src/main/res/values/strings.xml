@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Alarm</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_my_alarm">MyAlarm</string>
+    <string name="title_activity_pick_song">PickSongActivity</string>
+</resources>

@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity" >
+    <!--android:background="@drawable/maple" -->
+
+
+   <!-- <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Alarm"
+        android:id="@+id/start_service"
+        android:clickable="false"
+        android:layout_marginBottom="41dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#0026FF" />
+    -->
+    <AnalogClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/analogClock"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/current_song"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Time"
+        android:id="@+id/set_time"
+        android:textColor="#0026FF"
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/analogClock"
+        android:layout_alignRight="@+id/music_picker"
+        android:layout_alignEnd="@+id/music_picker"
+        android:layout_alignLeft="@+id/music_picker"
+        android:layout_alignStart="@+id/music_picker" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Music"
+        android:id="@+id/music_picker"
+        android:focusableInTouchMode="false"
+        android:enabled="true"
+        android:textColor="#0026FF"
+
+
+        android:layout_below="@+id/set_time"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/current_song"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+
+</RelativeLayout>
